@@ -1,21 +1,22 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
-spawn(function()
-	local plr = game.Players.LocalPlayer
-	while true do
-		if plr.Team and plr.Team.Name == "Inmate" and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
-			local hrp = plr.Character.HumanoidRootPart
-			hrp.CFrame = CFrame.new(411,91,2227)
-			task.wait(0.5)
-			hrp.CFrame = CFrame.new(-933,94,2040)
-			task.wait(0.5)
-			hrp.CFrame = CFrame.new(411,91,2227)
-			task.wait(0.5)
-		else
-			task.wait(0.1)
-		end
-	end
-end)
+local plr = game.Players.LocalPlayer
+local char = plr.Character
+if char and char:FindFirstChild("HumanoidRootPart") and char:FindFirstChildOfClass("Humanoid") then
+	local hrp = char.HumanoidRootPart
+	local hum = char:FindFirstChildOfClass("Humanoid")
+
+	
+	hrp.CFrame = CFrame.new(411,91,2227)
+	task.wait(0.5)
+	hrp.CFrame = CFrame.new(-931,94,2041)
+	task.wait(0.1)
+	hum:MoveTo(Vector3.new(-932, 94, 2039))
+	hum.MoveToFinished:Wait()
+
+	task.wait(0.2)
+	hrp.CFrame = CFrame.new(844,100,2357)
+end
 
 local Window = Rayfield:CreateWindow({
        Name = "Oreo Life",
